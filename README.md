@@ -1,5 +1,5 @@
 # sismologiachile
-API Que funciona extrayendo datos del sitio web Del CSN (https://www.sismologia.cl)
+API Que funciona extrayendo datos del sitio web Del CSN (https://www.sismologia.cl) Versión 1.0
 # Módulo Sismología
 
 Este módulo permite extraer y visualizar información sobre eventos sísmicos desde la página del CSN (Centro de Sismológico Nacional). Este módulo permite obtener datos tanto en modo básico como detallado, limitar el número de resultados, y un modo en vivo que actualiza los datos cada cierto intervalo de tiempo.
