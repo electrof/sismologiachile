@@ -1,3 +1,4 @@
+#Hecho por https://github.com/electrof 
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -19,12 +20,14 @@ def obtener_datos_sismicos(detallado=False, num_resultados=None):
     for fila in filas:
         columnas = fila.find_all('td')
         if len(columnas) == 3:
+            fecha_local = columnas[0].text.split('\n')[0].strip()
+            ubicacion = columnas[0].text.split('\n')[1].strip().replace("\n", " ").replace("  ", " ")
             evento = {
-                'id_evento': columnas[0].text.strip(),  # Usar la fecha y hora como identificador único
-                'fecha_local': columnas[0].text.split('\n')[0],
-                'ubicacion': columnas[0].text.split('\n')[1],
-                'profundidad': columnas[1].text,
-                'magnitud': columnas[2].text,
+                'id_evento': f"{fecha_local} {ubicacion}",
+                'fecha_local': fecha_local,
+                'ubicacion': ubicacion,
+                'profundidad': columnas[1].text.strip(),
+                'magnitud': columnas[2].text.strip(),
                 'detalles': obtener_detalles_sismicos(URL_BASE + columnas[0].find('a')['href']) if detallado else {}
             }
             eventos.append(evento)
@@ -44,7 +47,9 @@ def obtener_detalles_sismicos(enlace):
     
     detalles = {}
     for fila in tabla_detalles.find_all('tr'):
-        detalles[fila.find_all('td')[0].text] = fila.find_all('td')[1].text
+        key = fila.find_all('td')[0].text.strip()
+        value = fila.find_all('td')[1].text.strip().replace("\n", " ").replace("  ", " ")
+        detalles[key] = value
     return detalles
 
 def modo_en_vivo(intervalo=30):
