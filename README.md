@@ -27,7 +27,7 @@ A continuación, se describen las funciones disponibles en el módulo y cómo pu
 
 ### Ejemplos
 
-#### Obtener los últimos tres eventos en modo básico
+#### Obtener los últimos tres sismos en modo básico
 
 ```python
 from sismologia import obtener_datos_sismicos
@@ -37,7 +37,7 @@ for evento in eventos:
     print(evento)
 ```
 
-#### Obtener eventos en modo detallado
+#### Obtener sismos en modo detallado
 
 ```python
 from sismologia import obtener_datos_sismicos
