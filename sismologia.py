@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
-URL_BASE = 'http://www.sismologia.cl'
+URL_BASE = 'https://www.sismologia.cl'
 
 def obtener_datos_sismicos(detallado=False, num_resultados=None):
     respuesta = requests.get(URL_BASE)
